@@ -1,12 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
+import Button from '@mui/material/Button';
 import './App.css';
+import Dashboard from './screens/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App">      
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,7 +52,9 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
+      </header> */}
+      <Dashboard/>
+      <Button variant="contained">MUI Style</Button>
     </div>
   );
 }
