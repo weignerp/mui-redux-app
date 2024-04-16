@@ -53,8 +53,7 @@ function App() {
           </a>
         </span>
       </header> */}
-      <Dashboard/>
-      <Button variant="contained">MUI Style</Button>
+      <Dashboard/>      
     </div>
   );
 }
