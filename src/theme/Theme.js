@@ -126,7 +126,7 @@ export const themeSettings = (mode) => {
   return {
     palette: {
       mode: mode,
-      ...(mode === "dark")
+      ...(mode === "dark"
         ? {
             // palette values for dark mode
             primary: {
@@ -134,6 +134,7 @@ export const themeSettings = (mode) => {
             },
             secondary: {
               main: colors.greenAccent[500],
+              darker: colors.greenAccent[300],
             },
             neutral: {
               dark: colors.grey[700],
@@ -148,6 +149,7 @@ export const themeSettings = (mode) => {
             // palette values for light mode
             primary: {
               main: colors.primary[100],
+              darker: colors.primary[300],
             },
             secondary: {
               main: colors.greenAccent[500],
@@ -160,7 +162,7 @@ export const themeSettings = (mode) => {
             background: {
               default: "#fcfcfc",
             },
-          },
+          }),
     },
     typography: {
       fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
@@ -203,8 +205,7 @@ export const useMode = () => {
 
   const colorMode = useMemo(
     () => ({
-      toggleColorMode: () =>
-        setMode((prev) => (prev === "light" ? "dark" : "light")),
+      toggleColorMode: () => setMode((prev) => (prev === "light" ? "dark" : "light")),
     }),
     []
   );

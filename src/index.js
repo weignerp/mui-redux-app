@@ -11,6 +11,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import Select from "./components/Select";
+import Table from "./screens/Table";
 
 const AppContainer = () => {
   const [theme, colorMode] = useMode();
@@ -29,6 +30,10 @@ const AppContainer = () => {
       {
         path: "select",
         element: <Select />,
+      },
+      {
+        path: "table",
+        element: <Table />,
       },
     ] /* ,
     {

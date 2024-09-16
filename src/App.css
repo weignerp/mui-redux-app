@@ -38,6 +38,12 @@
   }
 }
 
-.text{
+.text {
   text-align: left;
+}
+
+.Item {
+  border: 1rem solid rgb(112, 76, 182);
+  height: 300px;
+  border-radius: 2rem;
 }

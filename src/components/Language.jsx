@@ -23,7 +23,7 @@ export function SvgIconChildren({ icon }) {
 const text = process.env.NODE_ENV;
 const test = process.env.REACT_APP_TEST;
 
-function Language() {
+const Language = () => {
   return (
     <Box sx={{ position: "relative", mt: 10 }}>
       <Typography>Language</Typography>
@@ -45,9 +45,9 @@ function Language() {
         </Typography>
       </Card>
       <Box position={"relative"} ml={5} mt={5} width={24} height={24}>
-        {Logo}
+        {Logo()}
       </Box>
     </Box>
   );
-}
+};
 export default Language;

@@ -46,8 +46,8 @@ function TopAppBar(props) {
           </Link>
         </ListItem>
         <ListItem key={567}>
-          <Link component="button" variant="body2" to="/">
-            Dashboard 2
+          <Link component="button" variant="body2" to="/select">
+            Select
           </Link>
         </ListItem>
       </List>
@@ -85,8 +85,11 @@ function TopAppBar(props) {
             <Button component={LinkBehavior} key={1568} to="/dashboard" sx={{ color: "#fff" }}>
               Dashboard
             </Button>
-            <Button component={LinkBehavior} key={1568} to="/" sx={{ color: "#fff" }}>
-              Home
+            <Button component={LinkBehavior} key={1569} to="/select" sx={{ color: "#fff" }}>
+              Select
+            </Button>
+            <Button component={LinkBehavior} key={15698} to="/table" sx={{ color: "#fff" }}>
+              Table
             </Button>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff" }}>

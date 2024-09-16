@@ -1,0 +1,136 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/**
+ * Language: Czech (cs)
+ */
+
+const langCS = {
+  time: {
+    month: ["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"],
+    monthAbbr: ["led", "úno", "bře", "dub", "kvě", "čer", "čvc", "srp", "zář", "říj", "lis", "pro"],
+    dayOfWeek: ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"],
+    dayOfWeekAbbr: ["ne", "po", "út", "st", "čt", "pá", "so"],
+  },
+  legend: {
+    selector: {
+      all: "Vše",
+      inverse: "Obrácené",
+    },
+  },
+  toolbox: {
+    brush: {
+      title: {
+        rect: "Obdélníkový výběr",
+        polygon: "Lasso výběr",
+        lineX: "Vodorovný výběr",
+        lineY: "Svislý výběr",
+        keep: "Ponechat výběr",
+        clear: "Smazat výběr",
+      },
+    },
+    dataView: {
+      title: "Zobrazení dat",
+      lang: ["Zobrazení dat", "Zavřít", "Aktualizovat"],
+    },
+    dataZoom: {
+      title: {
+        zoom: "Přiblížení",
+        back: "Zpět",
+      },
+    },
+    magicType: {
+      title: {
+        line: "Přepnout na čárový graf",
+        bar: "Přepnout na pruhový graf",
+        stack: "Překrytí",
+        tiled: "Titulek",
+      },
+    },
+    restore: {
+      title: "Obnovit",
+    },
+    saveAsImage: {
+      title: "Uložit jako obrázek",
+      lang: ["Pravým tlačítkem klikem uložit obrázek"],
+    },
+  },
+  series: {
+    typeNames: {
+      pie: "Výsečový graf",
+      bar: "Pruhový graf",
+      line: "Čárový graf",
+      scatter: "Bodový graf",
+      effectScatter: "Mozaický bodový graf",
+      radar: "Radarový graf",
+      tree: "Strom",
+      treemap: "Stromovou mapu",
+      boxplot: "Boxplot",
+      candlestick: "Svíčkový graf",
+      k: "K line chart",
+      heatmap: "Heat map",
+      map: "Map",
+      parallel: "Paralelní mapa",
+      lines: "Čárový graf",
+      graph: "Graf",
+      sankey: "Sankeový graf",
+      funnel: "Trchtýřový graf",
+      gauge: "Budíkový graf",
+      pictorialBar: "Pictobrojový graf",
+      themeRiver: "Theme River",
+      sunburst: "Sunburst",
+      custom: "Vlastní graf",
+      chart: "Graf",
+    },
+  },
+  aria: {
+    general: {
+      withTitle: "Toto je graf o „{title}“.",
+      withoutTitle: "Toto je graf.",
+    },
+    series: {
+      single: {
+        prefix: "",
+        withName: " Typ {seriesType} s názvem {seriesName}.",
+        withoutName: " Typ {seriesType}.",
+      },
+      multiple: {
+        prefix: ". Skládá se z {seriesCount} grafů count.",
+        withName: " {seriesId} graf je typu {seriesType} představujícího {seriesName}.",
+        withoutName: " {seriesId} graf je typu {seriesType}.",
+        separator: {
+          middle: "",
+          end: ".",
+        },
+      },
+    },
+    data: {
+      allData: "Data jsou následovní: ",
+      partialData: "Prvních {displayCnt} položek jsou: ",
+      withName: "data pro {name} jsou {value}",
+      withoutName: "{value}",
+      separator: {
+        middle: ", ",
+        end: ". ",
+      },
+    },
+  },
+};
+
+export default langCS;
