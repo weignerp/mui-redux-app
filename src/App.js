@@ -1,4 +1,5 @@
 import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import Button from "@mui/material/Button";
@@ -8,10 +9,12 @@ import "./App.css";
 
 import TopAppBar from "./components/TopAppBar";
 import Language from "./components/Language";
-import { Outlet } from "react-router";
+import { Outlet, Route, Routes } from "react-router";
 import Chart from "./components/Chart";
+import ErrorPage from "./screens/ErroPage";
+import MyErrorBoundary from "./components/MyErrorBoundary";
 
-function App() {
+export const HomePage = () => {
   return (
     <Box className="App" sx={{ px: 5 }}>
       <TopAppBar props={window} />
@@ -31,6 +34,17 @@ function App() {
       <Language />
       <Outlet />
     </Box>
+  );
+};
+
+function App() {
+  return (
+    <ErrorBoundary FallbackComponent={MyErrorBoundary}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </ErrorBoundary>
   );
 }
 

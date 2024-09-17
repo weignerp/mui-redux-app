@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { MaterialReactTable, useMaterialReactTable } from "material-react-table";
 import { LinearProgress } from "@mui/material";
 import { MRT_Localization_CS } from "material-react-table/locales/cs";
 import { fakerCS_CZ as faker } from "@faker-js/faker";
 import { Avatar, Box } from "@mui/material";
+import { useGetUsersQuery } from "../features/user/userApiSlice";
 
 //recommended flat structure for data, but not required (nested data is fine, but takes more setup in column definitions)
 //must be memoized or stable (useState, useMemo, defined outside of the component, etc.)
@@ -34,6 +35,7 @@ for (let i = 0; i < data.length; i++) {
     minValue = data[i].amount;
   }
 }
+
 /*
 const data = [
   {
@@ -47,7 +49,8 @@ const data = [
 ];
 */
 function MaterialTable() {
-  const columns = useMemo(
+  const [columnFilters, setColumnFilters] = useState();
+  const columns_ = useMemo(
     () => [
       {
         header: "Ticker",
@@ -77,6 +80,51 @@ function MaterialTable() {
     []
   );
 
+  const columns = useMemo(
+    () => [
+      { header: "id", accessorKey: "id", localization: "Id" },
+      { header: "name", accessorKey: "name", localization: "Jméno" },
+      { header: "username", accessorKey: "username", localization: "Uživatel" },
+    ],
+    []
+  );
+
+  const {
+    data: { data = [], meta = {} } = {}, //your data and api response will probably be different
+    isError,
+    isRefetching,
+    isLoading,
+    refetch,
+  } = useGetUsersQuery({
+    //<UserApiResponse>
+    queryKey: {
+      name: "table-data",
+      columnFilters: columnFilters || [], //refetch when columnFilters changes
+      // globalFilter, //refetch when globalFilter changes
+      // pagination.pageIndex, //refetch when pagination.pageIndex changes
+      // pagination.pageSize, //refetch when pagination.pageSize changes
+      // sorting, //refetch when sorting changes
+    },
+    /*
+    queryFn: async () => {
+      const fetchURL = new URL("/api/data", "127.0.0.1:13000");
+      console.log("fetchURL", fetchURL);
+      //read our state and pass it to the API as query params
+      // fetchURL.searchParams.set("start", `${pagination.pageIndex * pagination.pageSize}`);
+      // fetchURL.searchParams.set("size", `${pagination.pageSize}`);
+      fetchURL.searchParams.set("filters", JSON.stringify(columnFilters ?? []));
+      //fetchURL.searchParams.set("globalFilter", globalFilter ?? "");
+      // fetchURL.searchParams.set("sorting", JSON.stringify(sorting ?? []));
+
+      //use whatever fetch library you want, fetch, axios, etc
+      const response = await fetch(fetchURL.href);
+      const json = await response.json(); // as UserApiResponse;
+      return json;
+    },
+    */
+    placeholderData: true, //don't go to 0 rows when refetching or paginating to next page
+  });
+  console.log("table data", data);
   //pass table options to useMaterialReactTable
   const table = useMaterialReactTable({
     columns,
@@ -88,6 +136,15 @@ function MaterialTable() {
     enableGlobalFooter: false, //turn off a feature
     enableRowPinning: true,
     localization: MRT_Localization_CS,
+    onColumnFiltersChange: setColumnFilters,
+    manualFiltering: true,
+
+    state: {
+      columnFilters,
+      isLoading,
+      showAlertBanner: isError,
+      showProgressBars: isRefetching,
+    },
   });
 
   return <MaterialReactTable table={table} />;
